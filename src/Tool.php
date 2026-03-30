@@ -47,6 +47,8 @@ class Tool
 
     protected bool $concurrent = false;
 
+    protected bool $clientExecuted = true;
+
     public function __construct()
     {
         //
@@ -124,6 +126,18 @@ class Tool
     public function isConcurrent(): bool
     {
         return $this->concurrent;
+    }
+
+    public function clientExecuted(bool $clientExecuted = true): self
+    {
+        $this->clientExecuted = $clientExecuted;
+
+        return $this;
+    }
+
+    public function isClientExecuted(): bool
+    {
+        return $this->clientExecuted;
     }
 
     public function withParameter(Schema $parameter, bool $required = true): self

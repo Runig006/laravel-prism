@@ -123,6 +123,10 @@ class PendingRequest
 
         $tools = $this->tools;
 
+        foreach ($tools as $tool) {
+            $tool->clientExecuted();
+        }
+
         if (! $this->toolErrorHandlingEnabled && filled($tools)) {
             $tools = array_map(
                 callback: fn (Tool $tool): Tool => is_null($tool->failedHandler()) ? $tool : $tool->withoutErrorHandling(),

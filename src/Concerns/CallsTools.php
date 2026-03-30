@@ -29,6 +29,10 @@ trait CallsTools
      */
     protected function callTools(array $tools, array $toolCalls): array
     {
+        if (isset($tools[0]) && $tools[0]->isClientExecuted()) {
+            return [];
+        }
+
         $toolResults = [];
 
         // Consume generator to execute all tools and collect results
@@ -49,6 +53,10 @@ trait CallsTools
      */
     protected function callToolsAndYieldEvents(array $tools, array $toolCalls, string $messageId, array &$toolResults): Generator
     {
+        if (isset($tools[0]) && $tools[0]->isClientExecuted()) {
+            return;
+        }
+
         $groupedToolCalls = $this->groupToolCallsByConcurrency($tools, $toolCalls);
 
         $executionResults = $this->executeToolsWithConcurrency($tools, $groupedToolCalls, $messageId);
