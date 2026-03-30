@@ -1,6 +1,6 @@
 {
   "name": "prism-php/prism",
-  "description": "A powerful Laravel package for integrating Large Language Models (LLMs) into your applications.",
+  "description": "(FORK) A powerful Laravel package for integrating Large Language Models (LLMs) into your applications.",
   "type": "library",
   "license": "MIT",
   "autoload": {
